@@ -1,0 +1,430 @@
+/* ==================== PRICE CHART ==================== */
+.price-chart {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.chart-title-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chart-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d1d1f;
+}
+
+.forecast-model-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.forecast-model-badge.prophet {
+    background: #e8f4f8;
+    border: 1px solid #b3d4e6;
+    color: #003263;
+}
+
+.forecast-model-badge.simple_fallback {
+    background: #f5f5f7;
+    border: 1px solid #d1d1d6;
+    color: #6e6e73;
+}
+
+.chart-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CI Toggle - Apple Style */
+.ci-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ci-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.ci-toggle-slider {
+    width: 44px;
+    height: 26px;
+    background: #e5e5ea;
+    border-radius: 13px;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.ci-toggle-slider::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.ci-toggle input:checked + .ci-toggle-slider {
+    background: #003263;
+}
+
+.ci-toggle input:checked + .ci-toggle-slider::after {
+    transform: translateX(18px);
+}
+
+.ci-toggle-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1d1d1f;
+}
+
+/* Chart Legend */
+.chart-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #6e6e73;
+    font-weight: 500;
+}
+
+.legend-line {
+    width: 20px;
+    height: 2px;
+}
+
+.legend-line.solid {
+    background: #86868b;
+    opacity: 0.5;
+}
+
+.legend-line.dashed {
+    background: repeating-linear-gradient(
+        90deg,
+        #1d1d1f 0px,
+        #1d1d1f 8px,
+        transparent 8px,
+        transparent 12px
+    );
+}
+
+.legend-line.dotted {
+    background: repeating-linear-gradient(
+        90deg,
+        #1d1d1f 0px,
+        #1d1d1f 4px,
+        transparent 4px,
+        transparent 8px
+    );
+}
+
+/* Chart Body */
+.chart-body {
+    flex: 1;
+    min-height: 400px;
+}
+
+.chart-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: #86868b;
+    font-size: 14px;
+}
+
+/* Chart Footer */
+.chart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f2;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ==================== APPLE-STYLE REGION SELECTOR ==================== */
+.region-selector-apple {
+    display: inline-flex;
+    align-items: center;
+    background: #f5f5f7;
+    border-radius: 10px;
+    padding: 4px;
+    gap: 2px;
+}
+
+.region-divider {
+    width: 1px;
+    height: 20px;
+    background: #d1d1d6;
+    margin: 0 4px;
+}
+
+.region-btn-apple {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #6e6e73;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.region-btn-apple:hover {
+    color: #1d1d1f;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.region-btn-apple.active {
+    background: white;
+    color: #1d1d1f;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.region-btn-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.region-btn-apple.active .region-btn-indicator {
+    transform: scale(1.1);
+}
+
+/* Forecast Info */
+.forecast-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: #86868b;
+}
+
+.forecast-model-info {
+    font-weight: 600;
+    color: #6e6e73;
+}
+
+.forecast-ci-info {
+    padding-left: 12px;
+    border-left: 1px solid #e8e8ed;
+}
+
+/* ==================== TOOLTIP ==================== */
+.chart-tooltip {
+    background: rgba(255, 255, 255, 0.98);
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(20px);
+    min-width: 200px;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f2;
+}
+
+.tooltip-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d1d1f;
+}
+
+.tooltip-forecast-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #003263;
+    color: white;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.tooltip-content {
+    padding: 8px 0;
+}
+
+.tooltip-region {
+    padding: 10px 14px;
+}
+
+.tooltip-region:not(:last-child) {
+    border-bottom: 1px solid #f5f5f7;
+}
+
+.tooltip-region-header {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-left: 10px;
+    border-left: 3px solid;
+    color: #1d1d1f;
+}
+
+.tooltip-values {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 13px;
+}
+
+.tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.tooltip-label {
+    color: #86868b;
+    font-weight: 500;
+}
+
+.tooltip-value {
+    font-weight: 600;
+    color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+}
+
+.tooltip-ci-row {
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px dashed #e8e8ed;
+}
+
+.tooltip-ci-row .tooltip-label {
+    font-size: 11px;
+}
+
+.tooltip-ci-row .tooltip-value {
+    font-size: 11px;
+    color: #6e6e73;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 900px) {
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .chart-controls {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .chart-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .region-selector-apple {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .price-chart {
+        padding: 16px;
+    }
+    
+    .chart-body {
+        min-height: 320px;
+    }
+    
+    .region-selector-apple {
+        padding: 4px;
+        gap: 4px;
+    }
+    
+    .region-btn-apple {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .region-divider {
+        display: none;
+    }
+    
+    .chart-legend {
+        gap: 10px;
+    }
+    
+    .legend-item {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 400px) {
+    .region-selector-apple {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .region-btn-apple {
+        width: 100%;
+        justify-content: center;
+    }
+}
