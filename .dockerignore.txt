@@ -1,0 +1,33 @@
+# Node
+node_modules
+frontend/node_modules
+npm-debug.log
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.env
+
+# Build artifacts
+frontend/build
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.md
+*.log
