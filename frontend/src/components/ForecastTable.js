@@ -173,11 +173,7 @@ const ForecastTable = ({ forecast }) => {
             <div className="table-header">
                 <div className="table-title-section">
                     <h3>Forecast Data</h3>
-                    {forecast.model && (
-                        <span className={`model-badge ${forecast.model}`}>
-                            {forecast.model === 'prophet' ? 'Prophet Model' : 'Trend Model'}
-                        </span>
-                    )}
+ 
                 </div>
                 <div className="table-actions">
                     {forecast.confidence_interval && (

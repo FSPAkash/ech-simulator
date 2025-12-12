@@ -310,11 +310,7 @@ const PriceChart = ({
             <div className="chart-header">
                 <div className="chart-title-section">
                     <h3>Price Simulation and Forecast</h3>
-                    {forecast?.model && (
-                        <span className={`forecast-model-badge ${forecast.model}`}>
-                            {forecast.model === 'prophet' ? 'Prophet Model' : 'Trend Model'}
-                        </span>
-                    )}
+
                 </div>
                 <div className="chart-controls">
                     {hasConfidenceIntervals && (
@@ -559,9 +555,7 @@ const PriceChart = ({
                 </div>
                 {forecast && (
                     <div className="forecast-info">
-                        <span className="forecast-model-info">
-                            {forecast.model === 'prophet' ? 'Prophet' : 'Trend'} Model
-                        </span>
+
                         {forecast.confidence_interval && showConfidenceIntervals && (
                             <span className="forecast-ci-info">
                                 {forecast.confidence_interval} CI
