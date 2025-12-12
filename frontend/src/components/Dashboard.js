@@ -341,9 +341,9 @@ const Dashboard = ({user, onLogout}) => {
                                                                 {isPositive ? '↑ ' : '↓ '}{Math.abs(m.change_percent).toFixed(1)}%
                                                             </div>
                                                             <div className="card-prices">
-                                                                <span>${m.baseline_avg.toFixed(2)}</span>
+                                                                <span>${m.baseline_avg.toFixed(3)}</span>
                                                                 <span className="arrow">-</span>
-                                                                <span>${m.simulated_avg.toFixed(2)}</span>
+                                                                <span>${m.simulated_avg.toFixed(3)}</span>
                                                             </div>
                                                             {isAffected && justSimulated && (
                                                                 <div className="affected-indicator"></div>
