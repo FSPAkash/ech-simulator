@@ -76,7 +76,7 @@ const RegionalComparison = ({ metrics, dates }) => {
                                     tickFormatter={(v) => `$${v}`}
                                 />
                                 <Tooltip 
-                                    formatter={(v) => [`$${v.toFixed(2)}`, '']}
+                                    formatter={(v) => [`$${v.toFixed(3)}`, '']}
                                     contentStyle={{ 
                                         borderRadius: '8px', 
                                         border: '1px solid #e8e8ed',
